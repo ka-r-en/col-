@@ -1,0 +1,122 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+using namespace std;
+
+struct Fefe{
+	char letra;
+	struct Fefe *siguiente;
+};
+
+struct Fefe *frente, *rear, *aux;
+
+class cola{
+public:
+	void Insertar(char letter);
+	void Imprimir();
+	void Mostrar();
+	void Eliminar();
+};
+
+void cola::Insertar(char letter){
+ if (frente==NULL){
+ frente=new(Fefe);
+ frente->letra=letter;
+ rear=frente;
+
+ }
+
+ else{
+   aux=new(Fefe);
+   rear->letra=letter;
+   rear=aux;
+ }
+ rear->siguiente=NULL;
+}
+void cola::Imprimir(){
+	aux=frente;
+	if(frente==NULL){
+		cout<<"no hay valores."<<endl;
+	}
+	else{
+		while(aux!=NULL){
+			cout<<" esta en cola: "<<aux->letra<<endl;
+			aux=aux->siguiente;
+		}
+	}
+}
+
+void cola::Mostrar(){
+	if(frente==NULL){
+	cout<<" no hay valor alguno";
+	}else{
+	cout<<" en frente:"<<frente->letra;
+		}
+}
+void cola::Eliminar(){
+	if(frente==NULL){
+	cout<<" no hay valor alguno";
+	}else{
+		frente=frente->siguiente;
+	}
+}
+
+ int main() {
+	 int op;
+	 cout <<" que se quiere hacer?"<<endl<<endl;
+	 cout <<"1. cola"<<endl;
+	 cout <<"2. pila"<<endl;
+	 cout <<"3. egresar del programa"<<endl<<endl;
+	 cout <<"seleccione su opcion";
+	 cin>>op;
+
+	 switch(op){
+	 case 1:
+		 cola col;
+		 int opcion;
+		 char lett;
+		 while(opcion!=5){
+			 cout<<"1. Inserte en la cola"<<endl;
+			 cout<<"2. Imprimir en la cola"<<endl;
+			 cout<<"3. Mostrar en la cola"<<endl;
+			 cout<<"4. Eliminar de la cola"<<endl;
+			 cout<<endl<<"egresar de su programa"<<endl;
+			 cout<<endl<<"ingrese su opcion";
+			 cin>>opcion;
+			 switch(opcion){
+			 case 1:
+				 cout<<"Inserte letra:"<<endl;
+			     cin>>lett;
+			     col.Insertar(lett);
+			 break;
+			 case 2:
+				 col.Imprimir();
+			 break;
+			 case 3:
+				 col.Mostrar();
+			 break;
+			 case 4:
+				 col.Eliminar();
+			 break;
+			 case 5:
+				 cout<<"\n Bye";
+				 return 0;
+		      break;
+
+
+			 }
+
+		 }
+    break;
+	 case 2:
+
+    break;
+	 case 3:
+		 cout<<"Bye";
+		 return 0;
+		 break;
+
+	 }
+
+
+}
